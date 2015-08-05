@@ -1,40 +1,40 @@
-# Twitter API Extension
+# Twitter API Interface
 
-## Usage
+## Getting Started
 
-Import the `tmhOAuth.php` library:
+Install dependencies via [composer](https://getcomposer.org/):
 
-```
-require_once "tmhOAuth.php";
-```
+```bash
+$ composer install 
+``` 
 
-Create a new instance:
-```
- $twitter = new Twitter($config = array(
-    'consumer_key'          => '',
-    'consumer_secret'       => '',
-    'user_token'            => '',
-    'user_secret'           => '',
-    'screen_name'           => ''
+Create a php file with the following contents:
+
+```php
+// Autoload composer files and require the API interface
+require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/twitterApi.php';
+
+// Create a new instance
+$twitter = new Twitter($config = array(
+    'consumer_key'      => '',
+    'consumer_secret'   => '',
+    'user_token'        => '',
+    'user_secret'       => '',
+    'screen_name'       => ''
 ));
-```
 
-Get your tweets (consult the `twitterApi.php` file for more methods).
-```
-// fetches the 10 latest tweets from your timeline
-$tweets = $twitter->get(10);
-```
+// Get the 10 latest tweets
+// Consult the twitterApi.php file for more methods
+$data = $twitter->get(10);
 
-If you need to JSON encode the response to serve a Javascript AJAX request:
-```
+// Output as JSON
 header('Content-Type: application/json');
-echo json_encode($tweets);
+echo json_encode($data);
 ```
 
-## Attribution
-The `tmhOAuth.php` script was implemented by [themattharris](https://github.com/themattharris/tmhOAuth). Please consult those docs regarding Twitter OAuth stuff.
 
 ## Changelog
-
++ 2015/08/05: Composer handles library dependancies an refactoring
 + 2014/12/09: Added search method
 + 2013/06/05: Created
