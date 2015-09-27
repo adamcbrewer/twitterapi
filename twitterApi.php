@@ -311,7 +311,7 @@ class Twitter {
 
         static::api()->request('POST', static::api()->url('1.1/statuses/update'), $params);
 
-        $return static::_response();
+        return static::_response();
 
     }
 
